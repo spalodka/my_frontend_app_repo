@@ -1,1 +1,37 @@
-<p>login works!</p>
+<mat-card class="example-card">
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <p>
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Username"
+          formControlName="username"
+        />
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input
+        [type]="hide ? 'password' : 'text'" 
+          matInput
+          placeholder="Password"
+          formControlName="password"
+        />
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+    </p>
+
+    <p *ngIf="error" class="error">
+      {{ error }}
+    </p>
+
+    <div class="button-row">
+      <button mat-button color="primary">Login</button>
+      <button mat-button color="primary">Sign Up</button>
+    </div>
+  </form>
+</mat-card>
